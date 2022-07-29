@@ -1,3 +1,4 @@
+import getpass
 import time
 
 import numpy as np
@@ -79,8 +80,8 @@ def login(IQ_api, balance_mode):
     """
 
     print('Please enter your login information...')
-    email = 'jeffersonssantos92@gmail.com'  # str(input('Email: '))
-    pwd = 'jefferson123'  # str(input('Password: '))
+    email = str(input('Email: '))
+    pwd = getpass.getpass('senha:')  # str(input('senha: '))
     try:
         iq = IQ_api(email, pwd)
         check, reason = iq.connect()

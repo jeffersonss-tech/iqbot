@@ -38,13 +38,13 @@ macd_cross = 0
 adx_cross = 0
 
 api_iq = iq.login(IQ_Option, input(
-    'informe o tipo da conta! digite "PRACTICE" para usar conta de teste ou "REAL" para usar a  conta real:\n'))
+    f'{bcolors.WARNING}informe o tipo da conta! digite{bcolors.ENDC} "PRACTICE" {bcolors.WARNING}para usar conta de teste ou {bcolors.ENDC}"REAL"{bcolors.WARNING} para usar a  conta real:{bcolors.ENDC}\n'))
 assets = iq.load_goals(api_iq)
 
 while True:
     while int(time.localtime().tm_sec % 60) < 2:
         start = time.process_time()
-        print('obtendo indicadores\n')
+        print(f'{bcolors.OKCYAN}obtendo indicadores{bcolors.ENDC}\n')
         for asset in assets.keys():
 
             goal_asset = iq.rename_data(api_iq.get_candles(

