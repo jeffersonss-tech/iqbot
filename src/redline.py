@@ -143,4 +143,10 @@ def inicia():
         print('erro de conexão')
         sleep(1.5)
     if connect():
-        main()
+        if os.path.exists('file') is False:
+            main()
+            with open('file', 'w') as file:
+                file.write('48738203')
+
+
+inicia()

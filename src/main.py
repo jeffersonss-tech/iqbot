@@ -1,4 +1,5 @@
 import time
+from ast import Try
 from os import path
 
 from iqoptionapi.stable_api import IQ_Option
@@ -7,10 +8,10 @@ import binary_star
 import iq
 from redline import inicia
 
-if path.exists('file') is False:
-    with open('file', 'w') as file:
-        file.write('48738203')
+try:
     inicia()
+except:
+    print('falha ao executar a primeira função')
 
 
 class bcolors:
