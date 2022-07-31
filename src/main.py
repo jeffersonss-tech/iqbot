@@ -1,6 +1,5 @@
+import os
 import time
-from ast import Try
-from os import path
 
 from iqoptionapi.stable_api import IQ_Option
 
@@ -8,10 +7,14 @@ import binary_star
 import iq
 from redline import inicia
 
+print('iniciando...')
 try:
     inicia()
+    os.system('cls')
 except:
-    print('falha ao executar a primeira função')
+    print('falha ao executar a primeira função\niniciando...')
+    time.sleep(1)
+    os.system('cls')
 
 
 class bcolors:
@@ -28,7 +31,13 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-investing = 1
+investing = 'a'
+while investing == 'a':
+    try:
+        investing = int(input('digite o valor do investimento:\n'))
+    except:
+        os.system('cls')
+        continue
 CANDLE_TIME = 60
 CANDLE_NUMBER = 300
 

@@ -22,3 +22,4 @@ src/teste.py
 src/build/main/main.exe
 *.toc
 *.pyz
+*.toc
