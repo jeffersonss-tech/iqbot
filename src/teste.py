@@ -1,14 +1,16 @@
-'''from os import path
 
-from main import inicia
 
-if path.exists('file') is False:
-    with open('file', 'w') as file:
-        file.write('48738203')
-    inicia()
-'''
-from pydub import AudioSegment
-from pydub.playback import play
+from inspect import _empty
 
-song = AudioSegment.from_wav("pause.wav")
-play(song)
+from numpy import empty
+from pandas import isnull
+from traitlets import Int
+
+investing = 0
+while investing < 1 or investing > 10:
+    try:
+        investing = int(input('digite o valor do investimento:\n'))
+        if investing == Int(''):
+            break
+    except:
+        pass

@@ -31,13 +31,14 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-investing = 'a'
-while investing == 'a':
+investing = 0
+while investing < 1 or investing > 10:
     try:
         investing = int(input('digite o valor do investimento:\n'))
     except:
         os.system('cls')
-        continue
+        pass
+
 CANDLE_TIME = 60
 CANDLE_NUMBER = 300
 
@@ -47,8 +48,17 @@ ema_cross = 0
 macd_cross = 0
 adx_cross = 0
 
-api_iq = iq.login(IQ_Option, input(
-    f'{bcolors.WARNING}informe o tipo da conta! digite{bcolors.ENDC} "PRACTICE" {bcolors.WARNING}para usar conta de teste ou {bcolors.ENDC}"REAL"{bcolors.WARNING} para usar a  conta real:{bcolors.ENDC}\n'))
+api_iq = ''
+while api_iq != 'PRACTICE' and api_iq != 'REAL':
+    try:
+        os.system('cls')
+        api_iq = input(f'{bcolors.WARNING}informe o tipo da conta! digite{bcolors.ENDC} "PRACTICE" {bcolors.WARNING}ou deixe em branco para usar conta de teste, ou {bcolors.ENDC}"REAL"{bcolors.WARNING} para usar a  conta real:{bcolors.ENDC}\n')
+        if api_iq == '':
+            api_iq = 'PRACTICE'
+            break
+    except:
+        pass
+api_iq = iq.login(IQ_Option, api_iq)
 assets = iq.load_goals(api_iq)
 
 while True:
@@ -68,13 +78,14 @@ while True:
 
             # Strategy Call
             if ema_cross == 1 and macd_cross == 1 and adx_cross == 1:
-                ID = api_iq.buy(1, asset, 'call', 3)
+                # investing default is 1
+                ID = api_iq.buy(investing, asset, 'call', 3)
                 print(f'{bcolors.OKGREEN}comprando: {bcolors.ENDC}',
                       asset, ' ID: ', ID)
 
             # Strategy Put
             if ema_cross == -1 and macd_cross == -1 and adx_cross == -1:
-                ID = api_iq.buy(1, asset, 'put', 3)
+                ID = api_iq.buy(investing, asset, 'put', 3)
                 print(f'{bcolors.VERMELHO}Vendendo: {bcolors.ENDC}',
                       asset, ' ID: ', ID)
 
